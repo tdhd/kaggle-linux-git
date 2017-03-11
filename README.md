@@ -26,7 +26,8 @@ warning: you may want to set your diff.renameLimit variable to at least 779 and 
 
 try increasing the rename limit with `git config diff.renameLimit 999999` and rerun the export command.
 
-This will take a few minutes and produce the raw revision log. The time I last ran it, the file had about `200 MB` of size.
+This will take a few minutes and produce the raw revision log. The time I last ran it, the file had about `200 MB` of size and contained
+about 600.000 commits without merge commits.
 
 We will find the following information in that file:
 
@@ -58,7 +59,7 @@ The first few lines look like this, where all attributes for commit a separated 
 
 ### Processing the raw revision log
 
-To make this revision log useable for kaggle purposes we need to apply some postprocessing. We will do that with the help of this [processing script](process.py) or an interactive session with this [notebook](notebooks/revlog conversion.ipynb).
+To make this revision log useable for kaggle purposes we need to apply some postprocessing. We will do that with the help of this [notebook](notebooks/revlog conversion.ipynb).
 
 In that transformation to CSV we want to:
 
@@ -75,6 +76,8 @@ The final CSV file will then contain the following columns:
 * n_deletions: Deleted lines
 * subject: Subject of commit
 * author_id: Anonymized author ID.
+
+The last time I ran the conversion the CSV file had about 1.4 million lines.
 
 ## Notice
 
