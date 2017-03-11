@@ -54,3 +54,5 @@ The first few lines look like this, where all attributes for commit a separated 
 ### Processing the raw revision log
 
 To make this revision log useable for kaggle purposes we need to apply some postprocessing. We will do that with the help of a few python functions.
+
+You can use the notebook for an interactive processing of this data or just run the [processing script](process.py) script to convert the raw revlog to CSV format.
