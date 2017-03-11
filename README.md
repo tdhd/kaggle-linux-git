@@ -1,8 +1,6 @@
 # Kaggle linux kernel dataset
 
-This repository contains all commands and scripts that will reproduce the dataset on kaggle.
-
-TODO: link
+This repository contains all commands and scripts that will reproduce the [dataset on kaggle](https://www.kaggle.com/philschmidt/linux-kernel-git-revision-history).
 
 ## Preparing the data
 
