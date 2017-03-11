@@ -27,7 +27,7 @@ warning: you may want to set your diff.renameLimit variable to at least 779 and 
 try increasing the rename limit with `git config diff.renameLimit 999999` and rerun the export command.
 
 This will take a few minutes and produce the raw revision log. The time I last ran it, the file had about `200 MB` of size and contained
-about 600.000 commits without merge commits.
+about 600k commits without merge commits.
 
 We will find the following information in that file:
 
@@ -72,8 +72,8 @@ The final CSV file will then contain the following columns:
 * commit_hash: SHA-1 hash of the commit
 * commit_utc_offset_hours: Extraced UTC offset in hours from commit time
 * filename: The filename that was changed in the commit
-* n_additions: Added lines
-* n_deletions: Deleted lines
+* n_additions: Number of added lines
+* n_deletions: Number of deleted lines
 * subject: Subject of commit
 * author_id: Anonymized author ID.
 
