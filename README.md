@@ -24,7 +24,7 @@ warning: inexact rename detection was skipped due to too many files.
 warning: you may want to set your diff.renameLimit variable to at least 779 and retry the command.
 ```
 
-try increasing the rename limit with `git config merge.renameLimit 999999` and rerun the export command.
+try increasing the rename limit with `git config diff.renameLimit 999999` and rerun the export command.
 
 This will take a few minutes and produce the raw revision log. The time I last ran it, the file had about `200 MB` of size.
 
@@ -39,7 +39,7 @@ We will find the following information in that file:
 * one line per changed file with the number of lines changed and a proportional count of `+` and `-` for additions and deletions respectively
 * and a final summary of total number of files changed and total additions and deletions.
 
-The first few lines look like this, where all attributes for commit a separated by `\t` except for the file detail informations:
+The first few lines look like this, where all attributes for commit a separated by `\t` except for the file detail information:
 
 ```
 1487807129	2017-02-22 15:45:29 -0800	e8c26ab60598558ec3a626e7925b06e7417d7710	AuthorNameA	AuthorEmailA	mm/swap: skip readahead for unreferenced swap slots
@@ -58,14 +58,23 @@ The first few lines look like this, where all attributes for commit a separated 
 
 ### Processing the raw revision log
 
-To make this revision log useable for kaggle purposes we need to apply some postprocessing. We will do that with the help of a few python functions.
+To make this revision log useable for kaggle purposes we need to apply some postprocessing. We will do that with the help of this [processing script](process.py) or an interactive session with this [notebook](notebooks/revlog conversion.ipynb).
 
-We also want to:
+In that transformation to CSV we want to:
 
 * transform each file changed per commit into one line in the final CSV file
-* transform the information from 
+* transform the information from author name and email into an author ID.
 
-You can use the provided [notebook](notebooks/revlog conversion.ipynb) for an interactive processing of this data or just run the [processing script](process.py) script to convert the raw revlog to CSV format.
+The final CSV file will then contain the following columns:
+
+* author_timestamp: UNIX timestamp of when the commit happened
+* commit_hash: SHA-1 hash of the commit
+* commit_utc_offset_hours: Extraced UTC offset in hours from commit time
+* filename: The filename that was changed in the commit
+* n_additions: Added lines
+* n_deletions: Deleted lines
+* subject: Subject of commit
+* author_id: Anonymized author ID.
 
 ## Notice
 
